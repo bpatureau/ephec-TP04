@@ -1,7 +1,7 @@
 function sortList() {
   const MSG_INPUT = "Veuillez introduire votre mot, appuyez sur CANCEL pour abandonner !";
   const MSG_ABANDON = "Abandon demandé - Fin du programme !";
-  const MSG_ERREUR = "Erreur, veuillez ne pas introduire de chiffres";
+  const MSG_ERREUR = "Erreur, réintroduisez votre mot !";
 
   let allInputs = [];
   let input;
@@ -16,11 +16,13 @@ function sortList() {
       console.log(allInputs);
       continue;
     } else {
-      while (!isNaN(String(input)) && input != "STOP") {
+      while (!isNaN(String(input)) && input != "STOP" && input == "") {
         input = prompt(MSG_ERREUR);
       }
 
-      input = input.replace(/[^a-zA-Z]/g, "");
+      if (input) {
+        input = input.replace(/[^a-zA-Z]/g, "");
+      }
 
       allInputs.push(input);
     }
