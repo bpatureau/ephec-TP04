@@ -7,20 +7,24 @@ function sortList() {
   let input;
 
   while (input != "STOP") {
-    input = prompt(MSG_INPUT);
+    input = prompt(MSG_INPUT + (allInputs.length == 0 ? "" : `Valeurs actuelles : ${allInputs.join(", ")}`));
 
     if (input === null) {
       return alert(MSG_ABANDON);
     } else if (input == -1) {
       allInputs.pop();
-      console.log(allInputs);
       continue;
     } else {
-      while (!isNaN(String(input)) && input != "STOP") {
-        input = prompt(MSG_ERREUR);
+      while (!isNaN(String(input)) && input != "STOP" && input == "") {
+        input = prompt(MSG_ERREUR + (allInputs.length == 0 ? "" : `Valeurs actuelles : ${allInputs.join(", ")}`));
       }
 
-      input = input.replace(/[^a-zA-Z]/g, "");
+      if (input) {
+        input = input.replace(/[^a-zA-Z]/g, "");
+      }
+      if (input == "") {
+        continue;
+      }
 
       allInputs.push(input);
     }
