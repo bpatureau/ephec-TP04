@@ -1,37 +1,49 @@
 function sortList() {
   const MSG_INPUT = "Veuillez introduire votre mot, appuyez sur CANCEL pour abandonner !";
   const MSG_ABANDON = "Abandon demandé - Fin du programme !";
-  const MSG_ERREUR = "Erreur, veuillez ne pas introduire de chiffres";
+  const MSG_ERREUR = "ERREUR ! Veuillez introduire des lettres de A à Z !";
 
   let allInputs = [];
   let input;
 
   while (input != "STOP") {
-    input = prompt(MSG_INPUT + (allInputs.length == 0 ? "" : `Valeurs actuelles : ${allInputs.join(", ")}`));
+    input = prompt(MSG_INPUT + (allInputs.length == 0 ? "" : ` Valeurs actuelles : ${allInputs.join(", ")}`));
+
+    while (!isNaN(input)) {
+      if (input === null) {
+        break;
+      } else if (input == -1) {
+        break;
+      }
+
+      input = prompt(MSG_ERREUR + (allInputs.length == 0 ? "" : ` Valeurs actuelles : ${allInputs.join(", ")}`));
+    }
 
     if (input === null) {
       return alert(MSG_ABANDON);
-    } else if (input == -1) {
+    }
+
+    if (input == -1) {
       allInputs.pop();
       continue;
-    } else {
-      while (!isNaN(String(input)) && input != "STOP" && input == "") {
-        input = prompt(MSG_ERREUR + (allInputs.length == 0 ? "" : `Valeurs actuelles : ${allInputs.join(", ")}`));
-      }
-
-      if (input) {
-        input = input.replace(/[^a-zA-Z]/g, "");
-      }
-      if (input == "") {
-        continue;
-      }
-
-      allInputs.push(input);
     }
+
+    if (input) {
+      input = input.replace(/[^a-zA-Z]/g, "");
+    }
+    if (input == "") {
+      continue;
+    }
+
+    allInputs.push(input);
   }
 
+  // pop STOP from array
   allInputs.pop();
-  allInputs.sort();
+
+  allInputs.sort(function (a, b) {
+    return a.toLowerCase().localeCompare(b.toLowerCase());
+  });
 
   alert("Votre liste : " + allInputs.join(", "));
 }
