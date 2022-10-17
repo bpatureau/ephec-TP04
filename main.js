@@ -38,7 +38,6 @@ function sortList() {
     allInputs.push(input);
   }
 
-  // pop STOP from array
   allInputs.pop();
 
   allInputs.sort(function (a, b) {
