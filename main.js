@@ -1,7 +1,9 @@
 function sortList() {
   const MSG_INPUT = "Veuillez introduire votre mot, appuyez sur CANCEL pour abandonner !";
   const MSG_ABANDON = "Abandon demandé - Fin du programme !";
-  const MSG_ERREUR = "ERREUR ! Veuillez introduire des lettres de A à Z !";
+  const MSG_ERREUR = "ERREUR ! Veuillez introduire des lettres de A à Z et contenant moins de 25 caractères !";
+
+  const MAX_WORD_LENGTH = 25;
 
   let allInputs = [];
   let input;
@@ -9,7 +11,7 @@ function sortList() {
   while (input != "STOP") {
     input = prompt(MSG_INPUT + (allInputs.length == 0 ? "" : ` Valeurs actuelles : ${allInputs.join(", ")}`));
 
-    while (!isNaN(input)) {
+    while (!isNaN(input) || input.length > MAX_WORD_LENGTH) {
       if (input === null) {
         break;
       } else if (input == -1) {
