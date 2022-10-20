@@ -10,8 +10,12 @@ Bastien Patureau
 Louis Blatt
 
 Énoncé:
+Créer un trieur de liste par ordre alphabétique:
 
-soon
+Vérifier qu'il n'introduit que des lettres (pas de chiffres ni de caractères spéciaux)
+Introduire STOP pour obtenir la liste triée
+Introduire -1 pour effacer le mot précédemment introduit
+Cliquez sur le bouton CANCEL pour abandonner le programme
 
 */
 
