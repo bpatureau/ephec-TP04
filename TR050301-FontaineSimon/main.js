@@ -1,3 +1,20 @@
+/*
+Classe:
+1TL2
+
+Groupe:
+Simon Fontaine
+Diego Milla
+Timothy Truong
+Bastien Patureau
+Louis Blatt
+
+Énoncé:
+
+soon
+
+*/
+
 function sortList() {
   const MSG_INPUT = "Veuillez introduire votre mot, appuyez sur CANCEL pour abandonner !";
   const MSG_ABANDON = "Abandon demandé - Fin du programme !";
